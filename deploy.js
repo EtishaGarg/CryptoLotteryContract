@@ -1,13 +1,12 @@
 // deploy code will go here
-// hdwallet-provider is a module to connect to some target network and unlock an account for use on that network
+require('dotenv').config()
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 const Web3 = require('web3');
 const {abi, evm} = require('./compile.js');
+const mnemonic = process.env.MNEMONIC;
 
 const provider = new HDWalletProvider(
-    'hero nothing swim day fly lecture mother jaguar more laugh morning vintage', 
-    'https://rinkeby.infura.io/v3/966e06e0c83648b0b4bddb517d645f34' //connect to an Infura node
-);
+     mnemonic,'https://rinkeby.infura.io/v3/966e06e0c83648b0b4bddb517d645f34');
 const web3 = new Web3(provider);
 
 const deploy = async() => {
